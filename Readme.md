@@ -30,10 +30,19 @@ For more information, please refer to [our FPGA 2022 paper](https://github.com/c
 ### 1. Colne this repo and download the datasets
 ```
 git clone --recurse-submodules https://github.com/cornell-zhang/HiSparse.git
-cd datasets
-source download.sh
 ```
-You will find two directories: ```graph``` and ```pruned_nn``` containing the datasets used in our evaluation.
+
+Then, go to https://1drv.ms/u/s!AkSkNAzdS0qOhtYdlE08iDQ29aT1JQ?e=MO72MR
+to manually download the datasets, and unzip them into a directory named `datasets`.
+Please make sure you can find the following files in the `datasets` directory:
+```
+datasets/graph/gplus_108K_13M_csr_float32.npz
+datasets/graph/hollywood_1M_113M_csr_float32.npz
+...
+datasets/pruned_nn/transformer_50_512_33288_csr_float32.npz
+datasets/pruned_nn/transformer_60_512_33288_csr_float32.npz
+...
+```
 
 > If you are part of Zhang Group members and is running on our research servers, you may directly source
 the provided `setup.sh` and skip steps 2 and 3.
