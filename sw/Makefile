@@ -12,21 +12,22 @@ else
 endif
 
 ifndef HLS_INCLUDE
-	$(error HLS_INCLUDE is not set, please set it to the path to ap_fixed.h)
+$(error HLS_INCLUDE is not set, please set it to the path to ap_fixed.h)
 endif
 
 ifndef CNPY_INCLUDE
-	$(error CNPY_INCLUDE is not set, please set it to the path to cnpy.h)
+$(error CNPY_INCLUDE is not set, please set it to the path to cnpy.h)
 endif
+
 ifndef CNPY_LIB
-	$(error CNPY_LIB is not set, please set it to the path to libcnpy.so)
+$(error CNPY_LIB is not set, please set it to the path to libcnpy.so)
 endif
 
 HOST_ARCH = x86
 
 CXX := g++
 
-CXXFLAGS += -Wall -std=c++11
+CXXFLAGS += -Wall -std=c++14
 
 CXXFLAGS += -I$(CNPY_INCLUDE)
 LDFLAGS += -L$(CNPY_LIB) -lcnpy
