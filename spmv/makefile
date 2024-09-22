@@ -9,7 +9,7 @@ endif
 HW_HLS_VERSION = 2020.2
 HW_HLS_DEVICE = /work/shared/common/CAD_tool/xilinx/platforms/xilinx_u280_xdma_201920_3/xilinx_u280_xdma_201920_3.xpfm
 HW_BACKEND_VERSION = 2022.1
-HW_BACKEND_DEVICE = xilinx_u280_gen3x16_xdma_1_202211_1.xpfm
+HW_BACKEND_DEVICE = xilinx_u280_gen3x16_xdma_1_202211_1
 
 HLS_DIR := ./_x.$(TARGET)
 IMP_DIR := ./build_dir.$(TARGET)
