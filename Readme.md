@@ -1,5 +1,8 @@
 # <u>Hi</u>gh-Performance <u>Sparse</u> Linear Algebra on HBM-Equipped FPGAs Using HLS: A Case Study on SpMV (HiSparse)
 
+> This branch resolves the incompatibility between HiSparse HLS code and Vitis versions later than 2020.2,
+using a python-based tool named [svpp](https://github.com/yxd97/svpp).
+
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5819246.svg)](https://doi.org/10.5281/zenodo.5819246)
 
 HiSparse is a high-performance accelerator for sparse-matrix vcetor multiplication (SpMV).
@@ -18,7 +21,10 @@ For more information, please refer to [our FPGA 2022 paper](https://github.com/c
 
 ## Prerequisites
 * Platform: Xilinx Alveo U280
-* Toolchain: Xilinx Vitis 2020.2
+* Tools:
+  * Xilinx Vitis 2020.2
+  * Xilinx Vitis 2022.1
+  * [svpp](https://github.com/yxd97/svpp)
 
 ## To reproduce the results
 ### 1. Colne this repo and download the datasets
@@ -28,6 +34,10 @@ cd datasets
 source download.sh
 ```
 You will find two directories: ```graph``` and ```pruned_nn``` containing the datasets used in our evaluation.
+
+> If you are part of Zhang Group members and is running on our research servers, you may directly source
+the provided `setup.sh` and skip steps 2 and 3.
+
 
 ### 2. Install cnpy to load the datasets
 Cnpy is a C++ library that enables reading ```.npy``` files in C++. It is open-sourced available here: https://github.com/rogersce/cnpy.
@@ -40,13 +50,13 @@ export CNPY_LIB=<the directory contains cnpy library (libcnpy.so)>
 export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CNPY_LIB
 ```
 
-### 3. Set up Xilinx Vitis 2020.2
+### 3. Set up svpp
+Add the path to the svpp executable to your `PATH` environment variable.
 This step is defferent depending on the installation setup on your machine.
-However, to check whether you have correctly set it up, you can do
 ```
-printenv VITIS
+which svpp
 ```
-the path to the Vitis installation should appear if it's correctly set up.
+the path to the svpp installation should appear if it's correctly set up.
 
 ### 4. Run the pre-complied bitstream
 This repo has a pre-complied fixed-point bitstream: ```dempo_spmv.xclbin```.

@@ -39,41 +39,41 @@ KERNEL_OBJS += $(HLS_DIR)/spmv_sk0.xo
 
 $(HLS_DIR)/spmv_sk0.xo: spmv_sk0.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk0 -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk0 -I $(<D) -o $@ $^
 
 KERNEL_OBJS += $(HLS_DIR)/spmv_sk1.xo
 
 $(HLS_DIR)/spmv_sk1.xo: spmv_sk1.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk1 -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk1 -I $(<D) -o $@ $^
 
 KERNEL_OBJS += $(HLS_DIR)/spmv_sk2.xo
 
 $(HLS_DIR)/spmv_sk2.xo: spmv_sk2.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk2 -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_sk2 -I $(<D) -o $@ $^
 
 KERNEL_OBJS += $(HLS_DIR)/spmv_vector_loader.xo
 
 $(HLS_DIR)/spmv_vector_loader.xo: spmv_vector_loader.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_vector_loader -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_vector_loader -I $(<D) -o $@ $^
 
 KERNEL_OBJS += $(HLS_DIR)/spmv_result_drain.xo
 
 $(HLS_DIR)/spmv_result_drain.xo: spmv_result_drain.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_result_drain -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k spmv_result_drain -I $(<D) -o $@ $^
 
 KERNEL_OBJS += $(HLS_DIR)/k2k_relay.xo
 
 $(HLS_DIR)/k2k_relay.xo: k2k_relay.cpp
 	mkdir -p $(HLS_DIR)
-	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k k2k_relay -I'$(<D)' -o'$@' $^
+	$(VPP) $(HLS_CLFLAGS) --temp_dir $(HLS_DIR) -c -k k2k_relay -I $(<D) -o $@ $^
 
 $(SPMV_XCLBIN): $(KERNEL_OBJS)
 	mkdir -p $(IMP_DIR)
-	$(VPP) $(BACKEND_CLFLAGS) --temp_dir $(IMP_DIR) -l -o'$@' $^
+	$(VPP) $(BACKEND_CLFLAGS) --temp_dir $(IMP_DIR) -l -o $@ $^
 
 .PHONY: clean
 clean:
