@@ -45,10 +45,10 @@ CXXFLAGS += -Wno-uninitialized
 CXXFLAGS += -Wno-int-in-bool-context
 
 $(HW_DIR)/build_dir.hw_emu/spmv.xclbin:
-	cd $(HW_DIR); make -j5 build TARGET=hw_emu IMPL=$(IMPL)
+	cd $(HW_DIR); $(MAKE) -j5 build TARGET=hw_emu IMPL=$(IMPL)
 
 $(HW_DIR)/build_dir.hw/spmv.xclbin:
-	cd $(HW_DIR); make -j5 build TARGET=hw IMPL=$(IMPL)
+	cd $(HW_DIR); $(MAKE) -j5 build TARGET=hw IMPL=$(IMPL)
 
 .PHONY: demo host hw_emu hw benchmark
 host: host.cpp

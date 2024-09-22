@@ -1,0 +1,3 @@
+[submodule "svpp"]
+	path = svpp
+	url = git@github.com:yxd97/svpp.git
