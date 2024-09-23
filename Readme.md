@@ -2,6 +2,9 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.5819246.svg)](https://doi.org/10.5281/zenodo.5819246)
 
+> Note: if you are using a newer version of Vitis, which operates on a U280 shell version other than `xilinx_u280_xdma_201920_3`,
+please refer to the [2021+](https://github.com/cornell-zhang/HiSparse/tree/2021%2B) branch for running the design.
+
 HiSparse is a high-performance accelerator for sparse-matrix vcetor multiplication (SpMV).
 Implemented on a multi-die HBM-equipped FPGA device, HiSparse achieves 237MHz and delivers promising
 speedup with increased bandwidth efficiency when compared to prior arts on CPUs, GPUs, and FPGAs.
