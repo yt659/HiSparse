@@ -557,14 +557,14 @@ int main (int argc, char** argv) {
     bool found_device = false;
     auto devices = xcl::get_xil_devices();
     for (size_t i = 0; i < devices.size(); i++) {
-        if (devices[i].getInfo<CL_DEVICE_NAME>() == "xilinx_u280_xdma_201920_3") {
+        if (devices[i].getInfo<CL_DEVICE_NAME>() == "xilinx_u280_gen3x16_xdma_base_1") {
             device = devices[i];
             found_device = true;
             break;
         }
     }
     if (!found_device) {
-        std::cout << "ERROR : Failed to find " << "xilinx_u280_xdma_201920_3" << ", exit!\n";
+        std::cout << "ERROR : Failed to find " << "xilinx_u280_gen3x16_xdma_base_1" << ", exit!\n";
         exit(EXIT_FAILURE);
     }
     runtime.context = cl::Context(device, NULL, NULL, NULL);
