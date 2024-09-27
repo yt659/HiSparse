@@ -29,7 +29,9 @@ For more information, please refer to [our FPGA 2022 paper](https://github.com/c
 ## To reproduce the results
 ### 1. Colne this repo and download the datasets
 ```
-git clone --recurse-submodules https://github.com/cornell-zhang/HiSparse.git
+git clone https://github.com/cornell-zhang/HiSparse.git
+git checkout 2021+
+git submodule update
 ```
 
 Then, go to https://1drv.ms/u/s!AkSkNAzdS0qOhtYdlE08iDQ29aT1JQ?e=MO72MR
