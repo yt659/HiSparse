@@ -27,7 +27,7 @@ HOST_ARCH = x86
 
 CXX := g++
 
-CXXFLAGS += -Wall -std=c++14
+CXXFLAGS += -Wall -std=c++17
 
 CXXFLAGS += -I$(CNPY_INCLUDE)
 LDFLAGS += -L$(CNPY_LIB) -lcnpy
@@ -51,6 +51,7 @@ CXXFLAGS += -Wno-maybe-uninitialized
 CXXFLAGS += -Wno-uninitialized
 CXXFLAGS += -Wno-int-in-bool-context
 CXXFLAGS += -Wno-unknown-pragmas
+CXXFLAGS += -Wno-comment
 
 $(HW_DIR)/build_dir.hw_emu/spmv.xclbin:
 	cd $(HW_DIR); $(MAKE) -j5 build TARGET=hw_emu IMPL=$(IMPL)
@@ -58,13 +59,21 @@ $(HW_DIR)/build_dir.hw_emu/spmv.xclbin:
 $(HW_DIR)/build_dir.hw/spmv.xclbin:
 	cd $(HW_DIR); $(MAKE) -j5 build TARGET=hw IMPL=$(IMPL)
 
-.PHONY: demo host hw_emu hw benchmark
+.PHONY: demo host hw_emu hw benchmark host2 host3
+
 host: host.cpp
 	$(CXX) $(CXXFLAGS) -g $(xcl2_SRCS) $< -o host $(LDFLAGS)
+
+host2d: host2d.cpp
+	$(CXX) $(CXXFLAGS) -g $(xcl2_SRCS) $< -o host2d $(LDFLAGS)
 
 demo: benchmark.cpp ../demo_spmv.xclbin
 	$(CXX) $(CXXFLAGS) -O3 $(xcl2_SRCS) $< -o benchmark $(LDFLAGS)
 	./bm.sh ../demo_spmv.xclbin fixed
+
+demo2d: benchmark2d.cpp ../demo_spmv.xclbin
+	$(CXX) $(CXXFLAGS) -O3 $(xcl2_SRCS) $< -o benchmark2d $(LDFLAGS)
+	./bm2d.sh ../demo_spmv.xclbin fixed	
 
 benchmark: benchmark.cpp $(HW_DIR)/build_dir.hw/spmv.xclbin
 	$(CXX) $(CXXFLAGS) -O3 $(xcl2_SRCS) $< -o benchmark $(LDFLAGS)
